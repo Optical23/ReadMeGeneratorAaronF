@@ -1,9 +1,9 @@
-// TODO: Include packages needed for this application
+// These are the packages from npm and my other file functions to help the app run more efficiently
 var inquirer = require('inquirer');
 const fs = require('fs');
 const markdown = require('./utils/generateMarkdown');
-// const utils = require('utils');
-// TODO: Create an array of questions for user input
+
+//This questions array is the list of questions need to make the readme
 const questions = [
     {
         type: 'input',
@@ -19,7 +19,7 @@ const questions = [
         type: 'input',
         name: 'installation',
         message: 'What are the steps to installing your project?',
-        default: 'Clone the Repo and run "npm i" in console then run "node index.js"',
+        default: 'Clone the Repo and run "npm i" in console on integrated terminal then you are ready.',
     },
     {
         type: 'input',
@@ -53,14 +53,14 @@ const questions = [
     } 
 ];
 
-// TODO: Create a function to write README file
+//function calls the markdonw function and passes in the user input information
 function writeToFile(fileName, data) {
     fs.writeFile(fileName, markdown(data), err => {
         (err) ? console.log(err) : console.log('File written: Success');
     })
 }
 
-// TODO: Create a function to initialize app
+// This intiallizes the app run the questions and passing that data to the write file function
 function init() {
     inquirer
         .prompt(questions)
